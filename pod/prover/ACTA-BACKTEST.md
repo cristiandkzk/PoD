@@ -81,25 +81,38 @@ lamport de una métrica invalida el `output_hash`; recalcularlo para que cierre 
 
 ## 5. Verificarlo
 
+**Los datos están en este repo.** No hace falta pedir nada ni confiar en nadie:
+
 ```bash
+cd pod/prover
+
 python -m podprover replay \
     --order   orders/order-graduacion.json \
-    --dataset ticks-2026-06-10.jsonl ticks-2026-06-15.jsonl \
-    --receipt receipt.json
+    --dataset dataset/ticks-2026-06-10.jsonl dataset/ticks-2026-06-15.jsonl \
+    --receipt demo-receipt.json
 
 # 7c6ff4dc1543992ca6cfa6cf1950d7d43337bce9b21a8f0879a696de37600e76
 # exit 0
 ```
 
 `replay` sale **0** si reproduce el hash del recibo, **3** si no, **2** si el pedido o el dataset
-no validan.
+no validan. Sin dependencias: solo la stdlib de Python.
 
-> **Los datasets no están en este repo.** Son los ticks de mercado de `memebot/data`, fuera del
-> alcance de este proyecto. El pedido los fija **por hash**, así que cualquiera puede comprobar
-> que son los mismos — pero para correr el replay hay que tenerlos. Esa brecha es exactamente la
-> deuda de **disponibilidad de datos** declarada en
-> [`../program/SPEC-PROGRAM.md`](../program/SPEC-PROGRAM.md) §10: el sistema fija *cuáles* son
-> los bytes y no dice *dónde* conseguirlos.
+Y el dataset se puede verificar por separado, sin ejecutar nada:
+
+```bash
+cat dataset/ticks-2026-06-10.jsonl dataset/ticks-2026-06-15.jsonl | sha256sum
+# d793297fe9349f53e7399229eb8749308a6d9b05a448bdaf015ad2f72ad0c25d
+```
+
+El pedido referencia el dataset **solo por hash**, nunca por nombre de archivo: dónde vive no
+importa, importan los bytes.
+
+> **La deuda que esto no salda.** Que los datos estén acá resuelve la verificación *de esta
+> acta*, no el problema general: el sistema fija **cuáles** son los bytes y sigue sin decir
+> **dónde** conseguirlos. Con un dataset de 17 MB alcanza con adjuntarlo; con uno de 17 GB, no.
+> Es la deuda de **disponibilidad de datos** declarada en
+> [`../program/SPEC-PROGRAM.md`](../program/SPEC-PROGRAM.md) §10, y sigue abierta.
 
 ### Determinismo cross-machine
 

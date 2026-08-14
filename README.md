@@ -45,9 +45,10 @@ tres intérpretes, incluido un teléfono. Ese determinismo cross-machine es lo q
 resolución de una disputa en un **procedimiento repetible** y no en la opinión de un árbitro.
 
 📄 **[Acta de backtest](pod/prover/ACTA-BACKTEST.md)** — una ejecución real de 108
-configuraciones sobre 16 521 tokens, con los hashes, el recibo firmado, el comando de replay y
-—sobre todo— la sección de lo que la garantía **no** cubre. Es el mejor punto de entrada al
-proyecto si querés ver qué hace en concreto.
+configuraciones sobre 16 521 tokens, con los hashes, el recibo firmado y —sobre todo— la sección
+de lo que la garantía **no** cubre. **Los datos están en el repo**, así que se reproduce con un
+comando y sin pedirle nada a nadie. Es el mejor punto de entrada si querés ver qué hace esto en
+concreto.
 
 ### [`pod/program`](pod/program) — escrow con verificación optimista en Solana
 
