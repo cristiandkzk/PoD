@@ -1,0 +1,28 @@
+# ---------------------------------------------------------------------------
+# Este repo verifica cosas por HASH DE BYTES. Cualquier conversion de finales
+# de linea al hacer checkout rompe esa verificacion — y core.autocrlf=true es
+# el default de Git en Windows, asi que sin este archivo se rompe sola en la
+# mayoria de los clones.
+#
+# Concretamente, sin esto un clon en Windows recibiria CRLF y fallarian:
+#   - el sha256 del dataset (d793297f...), que el pedido fija
+#   - el spec_hash (a51f520b...), que se calcula sobre el pedido
+#   - y con el, el output_hash y la firma del recibo
+#
+# `-text` = tratar como bytes, nunca convertir. Es lo correcto para todo lo
+# que se compara por hash.
+# ---------------------------------------------------------------------------
+
+# Datos y pedidos: los bytes SON el contrato
+pod/prover/dataset/*.jsonl    -text
+pod/prover/orders/*.json      -text
+pod/prover/demo-receipt.json  -text
+
+# Vectores de prueba congelados de la spec: se comparan byte a byte
+pod/spec/testvectors/**       -text
+
+# ---------------------------------------------------------------------------
+# Scripts: LF siempre. Con CRLF, bash en Linux/WSL falla con un
+# "\r: command not found" que no dice nada util.
+# ---------------------------------------------------------------------------
+*.sh    text eol=lf
