@@ -1,0 +1,7 @@
+{
+  "name": "pod-escrow-devnet",
+  "private": true,
+  "type": "module",
+  "description": "Cliente del gate 1.4 contra una cadena de verdad. Arma las instrucciones desde el layout de SPEC-PROGRAM.md §4, sin compartir codigo con el programa: es una segunda implementacion de la normativa, igual que python/ y rust/ en pod/spec.",
+  "dependencies": { "@solana/web3.js": "^1.98.0" }
+}

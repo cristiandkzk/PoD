@@ -1,0 +1,8 @@
+# plataforma	arquitectura	sistema	interprete	fecha	resultado
+#
+# Cada fila reprodujo los tres hashes de EXPECTED_OUTPUT.tsv. Las dos primeras las corre
+# scripts/gate.py; la tercera se corrio a mano en un telefono y se asienta aca porque el
+# script no puede alcanzarla.
+windows	x86_64	Windows 11	CPython 3.14.4	2026-08-13	3/3
+wsl-ubuntu	x86_64	Ubuntu 24.04 (WSL2)	CPython 3.12.3	2026-08-13	3/3
+termux-android	aarch64	Android / Termux	CPython 3.14.6	2026-08-13	3/3

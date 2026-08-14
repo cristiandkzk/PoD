@@ -1,0 +1,10 @@
+# pedido	output_hash   (congelado - SPEC-RUNNER.md 3.3)
+#
+# dataset: sha256:d793297fe9349f53e7399229eb8749308a6d9b05a448bdaf015ad2f72ad0c25d
+#          memebot/data/ticks-2026-06-10.jsonl + ticks-2026-06-15.jsonl, por orden de nombre
+#
+# Cambiar un valor de aca es cambiar la semantica del trabajo, no arreglar un test:
+# todo pedido ya liquidado con el hash viejo pasa a ser irreproducible.
+order-graduacion.json	7c6ff4dc1543992ca6cfa6cf1950d7d43337bce9b21a8f0879a696de37600e76
+order-sniper.json	bf5a84450684a6b5c0811d3fbec2585acae989d9505cbdb2f41811482fa90676
+order-survivor.json	0981237719443fd8ac07ccbcce8604046a1d5ff40ec43fb99dc92788f9294bdb

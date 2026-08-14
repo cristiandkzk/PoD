@@ -1,0 +1,137 @@
+{
+	"runner": {
+		"toolchain": "node-22.22.3",
+		"entrypoint": [
+			"/usr/local/bin/node",
+			"/app/backtest.mjs",
+			"--json"
+		],
+		"image_ref": "ghcr.io/memebot/backtest-runner",
+		"image_digest": "sha256:a7d4e019a7d4e019a7d4e019a7d4e019a7d4e019a7d4e019a7d4e019a7d4e019",
+		"commit": "9c1d4f7a9c1d4f7a9c1d4f7a9c1d4f7a9c1d4f7a"
+	},
+	"limits": {
+		"wall_time_s": 3600,
+		"memory_bytes": 4294967296,
+		"cpu_count": 2
+	},
+	"output_shape": {
+		"rounding": "trunc_to_lamports.v1",
+		"format": "sweep_top.v1",
+		"top_n": 8,
+		"metrics": [
+			"gross_loss_lamports",
+			"gross_win_lamports",
+			"n_trades",
+			"net_lamports",
+			"unclosed",
+			"wins"
+		]
+	},
+	"deadline": {
+		"deliver_within_s": 7200,
+		"accept_by_unix_s": 1789000000
+	},
+	"payment": {
+		"bond_base_units": 10000000,
+		"mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+		"mint_decimals": 6,
+		"amount_base_units": 5000000
+	},
+	"proof_mode": {
+		"challenge_window_s": 3600,
+		"kind": "optimistic"
+	},
+	"schema_version": 1,
+	"class": "backtest.sweep.v1",
+	"inputs": {
+		"exit_policy": {
+			"trail_arm_bps": [
+				0,
+				3000,
+				5000
+			],
+			"trail_sell_bps": [
+				5000,
+				10000
+			],
+			"hard_stop_bps": [
+				2500,
+				4000,
+				6000
+			],
+			"time_stop_min": [
+				15,
+				30,
+				60
+			],
+			"trail_always": false,
+			"tp_mult": [
+				"1.5",
+				"2",
+				"3"
+			],
+			"tp_sell_bps": [
+				5000,
+				10000
+			],
+			"trail_bps": [
+				2000,
+				3000,
+				5000
+			]
+		},
+		"portfolio": {
+			"notional_lamports": 20000000,
+			"max_open_positions": 4
+		},
+		"costs": {
+			"fee_lamports_per_tx": 1000000,
+			"slippage_bps_per_side": 300
+		},
+		"dataset": {
+			"tokens": 8407,
+			"days": 2,
+			"first_unix_ms": 1781734633178,
+			"last_unix_ms": 1784187305956,
+			"hash": "sha256:067e277c1dac59fb8a7ca383f5f9aac087221c66a512316e7e290b72c7a993fc",
+			"format": "ticks.jsonl.v1",
+			"records": 24105
+		},
+		"split": {
+			"kind": "last_day_holdout.v1"
+		},
+		"strategy": {
+			"params": {
+				"min_mcap": [
+					"30",
+					"40",
+					"60"
+				],
+				"min_growth": [
+					"1.5",
+					"1.8",
+					"2.5"
+				],
+				"min_ratio": [
+					"1.2",
+					"1.4",
+					"1.8"
+				],
+				"min_age_min": [
+					8
+				],
+				"max_age_min": [
+					35
+				],
+				"min_buyers": [
+					25,
+					40,
+					60
+				]
+			},
+			"kind": "survivor.v1"
+		}
+	}
+}
+

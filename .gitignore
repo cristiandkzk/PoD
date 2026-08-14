@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------------------
+# CLAVES PRIVADAS — nunca subir.
+#
+# pod/program/devnet/*.json son keypairs de Solana (arrays de 64 bytes), no
+# configuracion. Entre ellas program-keypair.json, que es la clave privada de
+# PoDJWDugBecU1jjXJtvPTQgUQKVv9rBcNpK1hCfpmS1 — la direccion vanity grindeada
+# con `solana-keygen grind`. Publicarla la quema para siempre.
+#
+# No hace falta versionarlas: setup.sh y localnet.sh las regeneran si faltan.
+# ---------------------------------------------------------------------------
+pod/program/devnet/*.json
+!pod/program/devnet/package.json
+!pod/program/devnet/package-lock.json
+pod/program/devnet/deploy/
+**/runner.key
+*.pem
+*.key
+!**/EXPECTED*.tsv
+
+# ---------------------------------------------------------------------------
+# Artefactos de compilacion
+# ---------------------------------------------------------------------------
+target/
+**/target/
+node_modules/
+__pycache__/
+*.pyc
+*.so
+*.rlib
+
+# ---------------------------------------------------------------------------
+# Temporales y entorno local
+# ---------------------------------------------------------------------------
+.tmp/
+**/.tmp/
+.claude/
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Scratch y binarios que no aportan al repo publico
+# ---------------------------------------------------------------------------
+temp_update_canvas.py
+*.pen

@@ -1,0 +1,40 @@
+Gate 1.4 en cadena — salida literal de `bash devnet/localnet.sh`, 2026-08-13.
+
+El programa corre como .so compilado a SBF (sbpf v3, 81128 bytes) sobre agave 4.2.0.
+No es devnet: es un validador local. La diferencia esta declarada en devnet/README.md.
+
+desplegando pod_escrow.so (81128 bytes)...
+Program Id: PoDJWDugBecU1jjXJtvPTQgUQKVv9rBcNpK1hCfpmS1
+costo del despliegue: 0.567421 SOL
+
+cadena: http://127.0.0.1:8899  solana-core 4.2.0
+programa: PoDJWDugBecU1jjXJtvPTQgUQKVv9rBcNpK1hCfpmS1
+
+======================================================================
+GATE 1.4 (1) - el worker entrega un output_hash falso y pierde el bond
+======================================================================
+  [ok ] la orden quedo en DISPUTADA
+  [ok ] el output_hash entregado es el que se grabo
+  [ok ] el challenger quedo comprometido a una respuesta
+  pagador 0  worker -100000000  challenger 100000000  (lamports)
+  [ok ] el pagador mueve 0
+  [ok ] el worker mueve -100000000
+  [ok ] el challenger mueve 100000000
+  [ok ] I1: la suma de las tres cuentas se conserva
+  [ok ] I2: la cuenta se cerro y el rent volvio
+
+======================================================================
+GATE 1.4 (2) - el worker es honesto y el challenger pierde el deposito
+======================================================================
+  [ok ] la orden quedo en DISPUTADA
+  [ok ] el output_hash entregado es el que se grabo
+  [ok ] el challenger quedo comprometido a una respuesta
+  pagador -200000000  worker 250000000  challenger -50000000  (lamports)
+  [ok ] el pagador mueve -200000000
+  [ok ] el worker mueve 250000000
+  [ok ] el challenger mueve -50000000
+  [ok ] I1: la suma de las tres cuentas se conserva
+  [ok ] I2: la cuenta se cerro y el rent volvio
+
+======================================================================
+RESULTADO: los dos escenarios del gate 1.4 pasan en cadena

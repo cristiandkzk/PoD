@@ -1,0 +1,12 @@
+[package]
+name = "podspec"
+version = "0.1.0"
+edition = "2021"
+description = "Implementacion B (Rust) del formato canonico de WorkOrder - ver ../SPEC.md"
+
+# Sin dependencias, a proposito: la independencia entre las dos implementaciones del gate 3
+# se debilita si comparten una biblioteca. SHA-256 y el parser de JSON son propios.
+[dependencies]
+
+[profile.release]
+opt-level = 2

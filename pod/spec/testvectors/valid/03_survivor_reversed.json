@@ -1,0 +1,136 @@
+{
+    "proof_mode": {
+        "challenge_window_s": 3600,
+        "kind": "optimistic"
+    },
+    "payment": {
+        "bond_base_units": 10000000,
+        "amount_base_units": 5000000,
+        "mint_decimals": 6,
+        "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    },
+    "deadline": {
+        "deliver_within_s": 7200,
+        "accept_by_unix_s": 1789000000
+    },
+    "output_shape": {
+        "rounding": "trunc_to_lamports.v1",
+        "metrics": [
+            "gross_loss_lamports",
+            "gross_win_lamports",
+            "n_trades",
+            "net_lamports",
+            "unclosed",
+            "wins"
+        ],
+        "top_n": 8,
+        "format": "sweep_top.v1"
+    },
+    "limits": {
+        "cpu_count": 2,
+        "memory_bytes": 4294967296,
+        "wall_time_s": 3600
+    },
+    "runner": {
+        "entrypoint": [
+            "/usr/local/bin/node",
+            "/app/backtest.mjs",
+            "--json"
+        ],
+        "toolchain": "node-22.22.3",
+        "commit": "9c1d4f7a9c1d4f7a9c1d4f7a9c1d4f7a9c1d4f7a",
+        "image_digest": "sha256:a7d4e019a7d4e019a7d4e019a7d4e019a7d4e019a7d4e019a7d4e019a7d4e019",
+        "image_ref": "ghcr.io/memebot/backtest-runner"
+    },
+    "inputs": {
+        "costs": {
+            "fee_lamports_per_tx": 1000000,
+            "slippage_bps_per_side": 300
+        },
+        "portfolio": {
+            "notional_lamports": 20000000,
+            "max_open_positions": 4
+        },
+        "exit_policy": {
+            "trail_always": false,
+            "time_stop_min": [
+                15,
+                30,
+                60
+            ],
+            "hard_stop_bps": [
+                2500,
+                4000,
+                6000
+            ],
+            "trail_sell_bps": [
+                5000,
+                10000
+            ],
+            "trail_arm_bps": [
+                0,
+                3000,
+                5000
+            ],
+            "trail_bps": [
+                2000,
+                3000,
+                5000
+            ],
+            "tp_sell_bps": [
+                5000,
+                10000
+            ],
+            "tp_mult": [
+                "1.5",
+                "2",
+                "3"
+            ]
+        },
+        "strategy": {
+            "params": {
+                "min_ratio": [
+                    "1.2",
+                    "1.4",
+                    "1.8"
+                ],
+                "min_growth": [
+                    "1.5",
+                    "1.8",
+                    "2.5"
+                ],
+                "min_mcap": [
+                    "30",
+                    "40",
+                    "60"
+                ],
+                "min_buyers": [
+                    25,
+                    40,
+                    60
+                ],
+                "max_age_min": [
+                    35
+                ],
+                "min_age_min": [
+                    8
+                ]
+            },
+            "kind": "survivor.v1"
+        },
+        "split": {
+            "kind": "last_day_holdout.v1"
+        },
+        "dataset": {
+            "last_unix_ms": 1784187305956,
+            "first_unix_ms": 1781734633178,
+            "days": 2,
+            "tokens": 8407,
+            "records": 24105,
+            "format": "ticks.jsonl.v1",
+            "hash": "sha256:067e277c1dac59fb8a7ca383f5f9aac087221c66a512316e7e290b72c7a993fc"
+        }
+    },
+    "class": "backtest.sweep.v1",
+    "schema_version": 1
+}

@@ -1,0 +1,27 @@
+[package]
+name = "pod-escrow"
+version = "0.1.0"
+edition = "2021"
+description = "PoD — escrow on-chain sin verificacion (subfase 1.3)"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[features]
+no-entrypoint = []
+
+[dependencies]
+solana-program = "4"
+solana-system-interface = { version = "3", features = ["bincode"] }
+
+[dev-dependencies]
+solana-program-test = { version = "4.2", features = ["agave-unstable-api"] }
+solana-sdk = "4"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }
+
+[profile.release]
+overflow-checks = true
