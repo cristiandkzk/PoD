@@ -138,6 +138,27 @@ está firmado.
 > Es el mismo mecanismo que hace creíbles a los ensayos clínicos. No se confía en el
 > laboratorio: se lo obliga a declarar el protocolo antes de empezar.
 
+### Una demostración incómoda
+
+Lo mismo vale para los **datos**, y este dataset lo demuestra en vez de explicarlo.
+
+Adentro hay dos líneas con una operación de mi propia wallet
+(`2SXBfi9tRUG6UyjmZBP8KHFYd6Mk7RzEq5iFZxz3zDjL`), en el token `ATFgwiam…`:
+
+```
+23:05:42 UTC   compra   0,02025466 SOL
+23:11:13 UTC   venta    0,00212621 SOL     -89,5% en 5 min 31 s
+```
+
+Se pueden encontrar con un `grep` sobre el dataset publicado. **No las puedo sacar.** El hash es
+sobre los bytes concatenados: borrar una línea cambia el `sha256` del dataset, eso cambia el
+`spec_hash` que lo referencia, y con él se cae el `output_hash` y la firma del recibo. Toda el
+acta deja de verificar.
+
+Eso no es un efecto colateral molesto, es **la propiedad**: quien fija el hash antes de ejecutar
+pierde la capacidad de elegir los datos que le convienen — incluso sobre sí mismo, incluso
+después, incluso cuando le gustaría.
+
 ## 7. Lo que esto **no** prueba
 
 Si esta sección no estuviera, el resto no valdría nada. La garantía es angosta y conviene decir
