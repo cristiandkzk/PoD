@@ -60,6 +60,10 @@ proceso y como `.so` compilado sobre un validador.
 **Evidencia:** 34 tests exit 0, más los dos escenarios de disputa verificados en cadena.
 Detalle completo en [`pod/program/README.md`](pod/program/README.md).
 
+📝 **[Siete cosas que me rompieron al escribir un programa de Solana sin Anchor](pod/program/NOTAS-SIN-ANCHOR.md)**
+— sysvars que no funcionan off-SBF, el `.so` que compila y el validador rechaza, y por qué vaciar
+una cuenta no la cierra.
+
 ## Verificarlo
 
 ```bash
