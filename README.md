@@ -40,9 +40,14 @@ Ejecuta el pedido y firma el resultado. **Ed25519 implementado desde cero en Pyt
 (RFC 8032), sin dependencias fuera de la stdlib. Incluye el simulador original en Node como
 harness de fidelidad, para comprobar que el port no cambió el comportamiento.
 
-**Evidencia:** los 3 pedidos reproducen bit a bit en 3 plataformas distintas. Ese determinismo
-cross-machine es lo que convierte la resolución de una disputa en un **procedimiento
-repetible** y no en la opinión de un árbitro.
+**Evidencia:** los 3 pedidos reproducen bit a bit en 3 plataformas distintas — x86-64 y ARM64,
+tres intérpretes, incluido un teléfono. Ese determinismo cross-machine es lo que convierte la
+resolución de una disputa en un **procedimiento repetible** y no en la opinión de un árbitro.
+
+📄 **[Acta de backtest](pod/prover/ACTA-BACKTEST.md)** — una ejecución real de 108
+configuraciones sobre 16 521 tokens, con los hashes, el recibo firmado, el comando de replay y
+—sobre todo— la sección de lo que la garantía **no** cubre. Es el mejor punto de entrada al
+proyecto si querés ver qué hace en concreto.
 
 ### [`pod/program`](pod/program) — escrow con verificación optimista en Solana
 
